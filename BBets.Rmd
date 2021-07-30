@@ -11,9 +11,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse)
-require(tigerstats)
+require(tidyverse)
 require(knitr)
-source(file="BrLw.R")
 ```
 
 
@@ -47,13 +46,19 @@ bdays <- 1:365
 class <- sample(bdays, size = 35, replace = TRUE, prob = NULL)
 sort(class)
 betwin <- unique(class)
+brownlowbucks = 0
+nCLASS = 1000
 ```
 
 ```{r}
-brownlowbucks = 0
+for (i in 1:nCLASS){
+class <- sample(bdays, size = 35, replace = TRUE, prob = NULL)
 length(class)
+betwin = unique(class)
 length(betwin)
 brownlowbucks <- if(length(class) - length(betwin) >0) brownlowbucks = brownlowbucks+1 else brownlowbucks = brownlowbucks-2
+}
+brownlowbucks
 ```
 
 
