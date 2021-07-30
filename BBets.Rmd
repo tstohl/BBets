@@ -40,10 +40,18 @@ The function will be given a class_size, odds, and Number_of_bets made and will 
 
 <!--Decide on your methods:  In this section explain the approach you will take to attack the issue --- how will you decide on a likely estimate of professor Brownlow's earnings or losses after 637 bets. Also explain how you construct a 95% confidence interval about your estimate of his winnings !-->
 
+```{r}
+setsize = 35
+odds = 4.7
+bank=numeric()
+```
+
+
+
 
 ```{r}
 bdays <- 1:365
-class <- sample(bdays, size = 35, replace = TRUE, prob = NULL)
+class <- sample(bdays, size = setsize, replace = TRUE, prob = NULL)
 sort(class)
 betwin <- unique(class)
 brownlowbucks = 0
@@ -51,16 +59,24 @@ nCLASS = 1000
 ```
 
 ```{r}
+for(j in 1:50){
+  
+  
 for (i in 1:nCLASS){
-class <- sample(bdays, size = 35, replace = TRUE, prob = NULL)
+class <- sample(bdays, size = setsize, replace = TRUE, prob = NULL)
 length(class)
 betwin = unique(class)
 length(betwin)
 brownlowbucks <- if(length(class) - length(betwin) >0) brownlowbucks = brownlowbucks+1 else brownlowbucks = brownlowbucks-2
 }
-brownlowbucks
+bank[j] = brownlowbucks}
 ```
 
+
+
+```{r}
+hist(bank)
+```
 
 
 
