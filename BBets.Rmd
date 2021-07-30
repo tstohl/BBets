@@ -42,7 +42,7 @@ The function will be given a class_size, odds, and Number_of_bets made and will 
 
 ```{r}
 setsize = 35
-odds = 4.7
+odds = 4.4
 bank=numeric()
 ```
 
@@ -67,7 +67,7 @@ class <- sample(bdays, size = setsize, replace = TRUE, prob = NULL)
 length(class)
 betwin = unique(class)
 length(betwin)
-brownlowbucks <- if(length(class) - length(betwin) >0) brownlowbucks = brownlowbucks+1 else brownlowbucks = brownlowbucks-2
+brownlowbucks <- if(length(class) - length(betwin) > 0) brownlowbucks = brownlowbucks+1 else brownlowbucks = brownlowbucks-odds
 }
 bank[j] = brownlowbucks}
 ```
@@ -85,21 +85,7 @@ hist(bank)
 ## 1 start with 2.0
 
 
-```{r}
-BrLw(numClass = 35,odds=2.0,countoDo = 637)
-```
 
-too small - try 3
-
-
-```{r}
-BrLw(numClass = 35,odds=3.0,countoDo = 637)
-```
-
-
-```{r}
-BrLw(numClass = 35,odds=4.0,countoDo = 637)
-```
 
 
 # What size of class makes the 2:1 bet fair?  
@@ -108,34 +94,19 @@ BrLw(numClass = 35,odds=4.0,countoDo = 637)
 ##  try 34
 
 
-```{r}
-BrLw(numClass = 34,odds=2.0,countoDo = 637)
-```
-
 
 
 ###  ok try 31
 
 
-```{r}
-BrLw(numClass = 31,odds=2.0,countoDo = 637)
-```
-
 
 ###  ok try 29
 
-
-```{r}
-BrLw(numClass = 29,odds=2.0,countoDo = 637)
-```
 
 ###  ok try 28
 
 
 
-```{r}
-BrLw(numClass = 28,odds=4.0,countoDo = 637)
-```
 
 
 
@@ -151,12 +122,6 @@ BrLw(numClass = 28,odds=4.0,countoDo = 637)
 ## We will run the BrLw at the given conditions 100 times and get a 95% confidence interval
 
 
-```{r}
-fbank-numeric()
-for(j in 1:1000){
-  
-fbank[j] = BrLw(numClass = 35,odds=2.0,countoDo = 637)}
-```
 
 
 ## There are 1000 numbers in the bank - we sort them and take the middle 95%
