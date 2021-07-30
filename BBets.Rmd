@@ -11,8 +11,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse)
-require(tidyverse)
+require(tigerstats)
 require(knitr)
+source(file="BrLw.R")
 ```
 
 
@@ -30,20 +31,50 @@ There are 3 questions and there should be at least 3 separate commits, at least 
 2. For what size class is a 2:1 odds bet fair.
 3. How much money would Brownlow be expected to end up with if the bets went as described.
 
+## Our stategey is to build a Function
+
+
 # What are the fair odds  
 
 
 <!--Decide on your methods:  In this section explain the approach you will take to attack the issue --- how will you decide on a likely estimate of professor Brownlow's earnings or losses after 637 bets. Also explain how you construct a 95% confidence interval about your estimate of his winnings !-->
 
 
+
+
+
+## 0.1
+
+## 1 start with 2.0
+
+
+
 # What size of class makes the 2:1 bet fair?  
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
+
+## 1 try 34
+
+
+### 1 ok try 31
+
+
+### 2 ok try 29
+
+### 3 ok try 28
+
+
 
 
 # In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
   
 <!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
 
+
+## We will run the BrLw at the given conditions 100 times and get a 95% confidence interval
+
+## There are 1000 numbers in the bank - we sort them and take the middle 95%
+
+### The interval is 226 to 340
 
 # Discussion and Conclusion
 
