@@ -11,8 +11,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 require(tidyverse)
-require(tidyverse)
+require(tigerstats)
 require(knitr)
+source(file="BrLw.R")
 ```
 
 
@@ -40,43 +41,46 @@ The function will be given a class_size, odds, and Number_of_bets made and will 
 
 <!--Decide on your methods:  In this section explain the approach you will take to attack the issue --- how will you decide on a likely estimate of professor Brownlow's earnings or losses after 637 bets. Also explain how you construct a 95% confidence interval about your estimate of his winnings !-->
 
+
+We are going to use the BrLw function that we wrote. The function inputs the number of students in a class, the odds that Brownlow is giving, and lastly the number of times Brownlow teaches such a class. 
+
+What comes back out is how much money Brownlow made. 
+The function is below
+
+
+
 ```{r}
-setsize = 35
-odds = 4.4
+BrLw(35,2,637)
+```
+
+```{r}
+BrLw(35,4,637)
+```
+
+
+
+```{r}
 bank=numeric()
-```
-
-
-
-
-```{r}
-bdays <- 1:365
-class <- sample(bdays, size = setsize, replace = TRUE, prob = NULL)
-sort(class)
-betwin <- unique(class)
-brownlowbucks = 0
-nCLASS = 1000
-```
-
-```{r}
-for(j in 1:50){
+for(j in 1:500){
   
-  
-for (i in 1:nCLASS){
-class <- sample(bdays, size = setsize, replace = TRUE, prob = NULL)
-length(class)
-betwin = unique(class)
-length(betwin)
-brownlowbucks <- if(length(class) - length(betwin) > 0) brownlowbucks = brownlowbucks+1 else brownlowbucks = brownlowbucks-odds
-}
-bank[j] = brownlowbucks}
+ 
+bank[j] = BrLw(35,4.35,637)}
 ```
 
 
 
 ```{r}
 hist(bank)
+favstats(bank)
+sorted<-sort(bank)
+print(sorted[12])
+print(sorted[488])
+
 ```
+
+
+It looks like the number Brownlow would have to bet for fair odds is $4.35. 
+The way to tell by looking at this histogram that the number has reached fair odds is when 0 is in the middle. 
 
 
 
@@ -93,6 +97,9 @@ hist(bank)
 
 ##  try 34
 
+```{r}
+BrLw(34,2,637)
+```
 
 
 
@@ -100,15 +107,28 @@ hist(bank)
 
 
 
+```{r}
+BrLw(31,2,637)
+```
+
+
 ###  ok try 29
+
+
+```{r}
+BrLw(29,2,637)
+```
 
 
 ###  ok try 28
 
 
+```{r}
+BrLw(28,2,637)
+```
 
 
-
+It looks like the earning and losing differentiated. However, the class size where Brownlow appears to be consistently losing is 28.
 
 
 
