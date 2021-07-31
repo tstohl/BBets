@@ -81,7 +81,7 @@ print(sorted[488])
 
 It looks like the number Brownlow would have to bet for fair odds is $4.35. 
 The way to tell by looking at this histogram that the number has reached fair odds is when 0 is in the middle. 
-
+hii
 
 
 ## 0.1
