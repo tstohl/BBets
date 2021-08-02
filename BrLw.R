@@ -1,4 +1,4 @@
-c
+
 
 BrLw <- function(numClass,odds,countoDo){
   

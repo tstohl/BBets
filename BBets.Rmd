@@ -73,20 +73,35 @@ BrLw(35,4.0,637)
 
 
 ```{r}
-BrLw(35,4.0,637)
+BrLw(35,4.35,637)
 ```
+Getting closer. it looks like about 4 and some change makes fair odds. 
+
 
 ```{r}
 BrLw(35,4.5,637)
 ```
+4.5 seems a little high. 4.35 seems like a good number to go by. Below is a histogram that run the test 100 times with a class size of 35 and and odds of 4.35
+
+
+
 
 
 ```{r}
-BrLw(35,5.0,637)
+bank=numeric()
+for(j in 1:1000){
+  
+ 
+bank[j] = BrLw(35,4.35,637)}
 ```
-5 looks to be too big.
 
-It looks like the number Brownlow would have to bet for fair odds is $4.35. 
+```{r}
+hist(bank)
+```
+
+
+
+It looks like the number Brownlow would have to bet for fair odds is somewhere between 4 and 5 
 The way to tell by looking at this histogram that the number has reached fair odds is when 0 is in the middle. 
 
 
@@ -130,31 +145,20 @@ Losing more than he is winning.
 
 The best class size for a fair bet is between 28 and 29 but since we can't only have half a student, 29 is the best choice.
 
-It looks like the earning and losing differentiated. However, the class size where Brownlow appears to be consistently losing is 28.
+It looks like the earning and losing differentiated. However, the class size where Brownlow appears to be consistently losing is 29.
 
 
 
 
-# In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
-  
-<!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
-
-
-
-
-
-
-
-## We will run the BrLw at the given conditions 500 times and get a 95% confidence interval
-
+## We will run the BrLw at the given conditions 1000 times and get a 95% confidence interval
 
 
 ```{r}
 bank=numeric()
-for(j in 1:500){
+for(j in 1:1000){
   
  
-bank[j] = BrLw(35,4.35,637)}
+bank[j] = BrLw(35,2,637)}
 ```
 
 
@@ -163,20 +167,30 @@ bank[j] = BrLw(35,4.35,637)}
 hist(bank)
 favstats(bank)
 sorted<-sort(bank)
-print(sorted[12])
-print(sorted[488])
-
+print(sorted[25])
+print(sorted[975])
 ```
 
+
+Here we have a histogram, second a t.test and lastly a favstats.
+The histogram shows the 95% confidence interval
+the favstats bases the 95% confidence interval off of the mean minus two times the SD and the mean plus 2 times the SD. 
+Every times the code is ran the numbers will change slightly. 
 
 
 # In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
   
 <!--Explain and display your method of coming up with a 95% confidence interval of  professor Brownlows winnings (or losings)-->
 
-
+The 95% confidence interval is created using 25 as its lowest number and 975 as its highest. The 95% confidence interval changes every time the code is ran but it seems to be right around 226 to 340 last time.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If professor Brownlow is consistantly making or losing money how could he change his payout so that his profits center on zero?  Also discuss what size his class should be in order to have his current scheme balance at zero profit.!-->
+  
+  
+It looks like the fair odds for Brownlow was about 4.35 give or take. It definitely between 4 and 5. The way you can determine this is the number is as close to 0 as it can be. 
+To make the bet fair the optimal class size is probably 29. Whenever the code is ran, different results are present, and they are sporadic. 
+The 95% confidence interval for a class of 35 students changes, but the last time the code was ran it feel between 226 and 340. 
 
+Brownlow is expected to make between about 220 and 340 dollars but just as the code changes, so does the amount of money he is expected to make
